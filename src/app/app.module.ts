@@ -4,23 +4,35 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ExercisesComponent } from './exercises/exercises.component';
+import { WorkoutComponent } from './workout/workout.component';
+import { MuscleGroupComponent } from './exercises/muscle-group/muscle-group.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ExercisesComponent,
+    WorkoutComponent,
+    MuscleGroupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatCardModule,
     MatListModule,
     MatButtonModule,
     MatExpansionModule,
-    MatInputModule
+    MatIconModule,
+    MatInputModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

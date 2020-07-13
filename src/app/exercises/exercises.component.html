@@ -1,0 +1,57 @@
+<div class="workout-creation-container">
+    <div class="exercise-selector-container">
+      <h2>Exercises (by muscle group)</h2>
+      <mat-card>
+        <mat-card-title>Rest</mat-card-title>
+        <mat-card-content>
+          <div class="muscle-group-list">
+            <mat-expansion-panel #mep="matExpansionPanel" class="muscle-group-exercise" *ngFor="let exercise of restList">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ exercise.name }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-form-field style="margin-top:15px">
+                <mat-label>Seconds</mat-label>
+                <input #totalSeconds matInput placeholder="Ex. 30" value="30">
+              </mat-form-field>
+              <button style="margin-left:15px" mat-raised-button color="warn" (click)="addExerciseToWorkout(exercise.id, totalSeconds.value); mep.expanded = false">Add to current workout</button>
+            </mat-expansion-panel>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <app-muscle-group [muscleGroupName]="'Abs'" [exerciseList]="abList" (selected)="addExerciseToWorkout($event)"></app-muscle-group>
+      <app-muscle-group [muscleGroupName]="'Biceps'" [exerciseList]="bicepList" (selected)="addExerciseToWorkout($event)"></app-muscle-group>
+      <app-muscle-group [muscleGroupName]="'Chest'" [exerciseList]="chestList" (selected)="addExerciseToWorkout($event)"></app-muscle-group>
+      <app-muscle-group [muscleGroupName]="'Shoulder'" [exerciseList]="shoulderList" (selected)="addExerciseToWorkout($event)"></app-muscle-group>
+      <app-muscle-group [muscleGroupName]="'Triceps'" [exerciseList]="tricepList" (selected)="addExerciseToWorkout($event)"></app-muscle-group>
+    </div>
+    <div class="workout-summary-container">
+      <h2>Workout Summary</h2>
+      <mat-list class="workout-summary-list">
+        <mat-card
+          [ngClass]="{'rest-item': workout.id === 0}"
+          *ngFor="let workout of finalList; let i = index;">
+          <mat-card-content style="display:flex; justify-content: space-between; width:100%; font-size:18px">
+            <span>{{ workout.name }}</span>
+            <span>
+              {{ workout.repCount }}
+              <span *ngIf="workout.id !== 0">reps</span>
+              <span *ngIf="workout.id === 0">seconds</span>
+            
+                <mat-icon
+                  (click)="removeExerciseFromWorkout(i)"
+                  class="remove-exercise-btn"
+                  aria-hidden="false"
+                  aria-label="Example home icon">
+                  remove_circle_outline
+                </mat-icon>
+            </span>
+          </mat-card-content>
+        </mat-card>
+        <button 
+        *ngIf="finalList.length > 0"
+        style="display: flex; justify-self:center; margin-top:15px" mat-raised-button color="warn" (click)="createWorkout()">Create Workout</button>
+      </mat-list>
+    </div>
+  </div>

@@ -1,0 +1,45 @@
+.workout-creation-container {
+    margin-top: 30px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+mat-list-item {
+    border: 1px solid black;
+}
+
+.exercise-selector-container {
+    width: 40%;
+    display: inline-block;
+
+    mat-card {
+        margin-bottom: 15px;
+    }
+}
+
+.workout-summary-container {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+
+    mat-card {
+        margin-bottom: 5px;
+    }
+}
+
+.rest-item {
+    background-color: #f44336;
+}
+
+.remove-exercise-btn {
+    color:white;
+    margin-left: 7.5px;
+
+    &:hover {
+        cursor: pointer;
+        color: red;
+        transform: scale(1.05);
+        transition: 0.5s;
+    }
+}
