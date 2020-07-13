@@ -1,30 +1,7 @@
 <div class="workout-creation-container">
     <div class="exercise-selector-container">
       <h2>Exercises (by muscle group)</h2>
-      <mat-card>
-        <mat-card-title>Rest</mat-card-title>
-        <mat-card-content>
-          <div class="muscle-group-list">
-            <mat-expansion-panel #mep="matExpansionPanel" class="muscle-group-exercise" *ngFor="let exercise of restList">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  {{ exercise.name }}
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <mat-form-field>
-                <mat-label>Seconds</mat-label>
-                <input #totalSeconds matInput placeholder="Ex. 30" value="30">
-              </mat-form-field>
-              <button
-                mat-raised-button
-                color="warn"
-                (click)="addExerciseToWorkout({id: exercise.id, reps: totalSeconds.value}); mep.expanded = false">
-                Add to current workout
-              </button>
-            </mat-expansion-panel>
-          </div>
-        </mat-card-content>
-      </mat-card>
+      <app-muscle-group [muscleGroupName]="'Rest'" [exerciseList]="restList" (selected)="addExerciseToWorkout($event)"></app-muscle-group>
       <app-muscle-group [muscleGroupName]="'Abs'" [exerciseList]="abList" (selected)="addExerciseToWorkout($event)"></app-muscle-group>
       <app-muscle-group [muscleGroupName]="'Biceps'" [exerciseList]="bicepList" (selected)="addExerciseToWorkout($event)"></app-muscle-group>
       <app-muscle-group [muscleGroupName]="'Chest'" [exerciseList]="chestList" (selected)="addExerciseToWorkout($event)"></app-muscle-group>
@@ -43,13 +20,13 @@
               {{ workout.repCount }}
               <span *ngIf="workout.id !== 0">reps</span>
               <span *ngIf="workout.id === 0">seconds</span>
-                <mat-icon
-                  (click)="removeExerciseFromWorkout(i)"
-                  class="remove-exercise-btn"
-                  aria-hidden="false"
-                  aria-label="Remove Exercise Icon">
-                  remove_circle_outline
-                </mat-icon>
+              <mat-icon
+                (click)="removeExerciseFromWorkout(i)"
+                class="remove-exercise-btn"
+                aria-hidden="false"
+                aria-label="Remove Exercise Icon">
+                remove_circle_outline
+              </mat-icon>
             </span>
           </mat-card-content>
         </mat-card>

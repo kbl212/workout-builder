@@ -39,7 +39,7 @@
           <strong>REST for {{ exerciseList[selectedExercise].repCount }} seconds</strong>
         </div>
         <div class="video-button-container">
-          <div>
+          <div class="btn-container">
             <button
               mat-raised-button
               color="basic"
@@ -48,13 +48,13 @@
               Previous
             </button>
           </div>
-          <div>
+          <div class="text-container">
             <strong>{{ exerciseList[selectedExercise].name }}, {{ exerciseList[selectedExercise].repCount }}
               <span *ngIf="exerciseList[selectedExercise].id !== 0">reps</span>
               <span *ngIf="exerciseList[selectedExercise].id === 0">seconds</span>
             </strong>
           </div>
-          <div>
+          <div class="btn-container">
             <button
               mat-raised-button
               color="warn"

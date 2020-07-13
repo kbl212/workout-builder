@@ -1,3 +1,5 @@
+$theme-blue: #4051B5;
+
 .workout-creation-container {
     margin-top: 30px;
     padding: 15px;
@@ -12,14 +14,14 @@
             margin-bottom: 15px;
 
             mat-expansion-panel-header {
-                background-color: #4051B5;
+                background-color: $theme-blue;
             
                 &:hover {
-                    background-color: #4051B5;
+                    background-color: $theme-blue;
                 }
             
                 &:selected {
-                    background-color: #4051B5;
+                    background-color: $theme-blue;
                 }
             }
 
@@ -63,6 +65,7 @@
     .remove-exercise-btn {
         color:#fff;
         margin-left: 7.5px;
+        font-size: 18px;
     
         &:hover {
             cursor: pointer;

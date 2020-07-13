@@ -1,16 +1,10 @@
+$theme-blue: #4051B5;
+
 .muscle-group {
     margin-bottom: 7.5px;
 
     mat-expansion-panel-header {
-        background-color: #4051B5;
-    
-        &:hover {
-            background-color: #4051B5;
-        }
-    
-        &:selected {
-            background-color: #4051B5;
-        }
+        background-color: $theme-blue !important;
     }
     
     .muscle-group-exercise-list {
