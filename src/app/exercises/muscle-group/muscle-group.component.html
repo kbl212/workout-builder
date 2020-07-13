@@ -8,11 +8,16 @@
               {{ exercise.name }}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <mat-form-field class="example-full-width">
+          <mat-form-field>
             <mat-label>Repetitions</mat-label>
             <input #totalReps matInput placeholder="Ex. 10" value="10">
           </mat-form-field>
-          <button mat-raised-button color="warn" (click)="selected.emit({id: exercise.id, reps: totalReps.value})">Add to current workout</button>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="selected.emit({id: exercise.id, reps: totalReps.value})">
+            Add to current workout
+        </button>
         </mat-expansion-panel>
       </div>
     </mat-card-content>

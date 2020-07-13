@@ -11,11 +11,16 @@
                   {{ exercise.name }}
                 </mat-panel-title>
               </mat-expansion-panel-header>
-              <mat-form-field style="margin-top:15px">
+              <mat-form-field>
                 <mat-label>Seconds</mat-label>
                 <input #totalSeconds matInput placeholder="Ex. 30" value="30">
               </mat-form-field>
-              <button style="margin-left:15px" mat-raised-button color="warn" (click)="addExerciseToWorkout(exercise.id, totalSeconds.value); mep.expanded = false">Add to current workout</button>
+              <button
+                mat-raised-button
+                color="warn"
+                (click)="addExerciseToWorkout({id: exercise.id, reps: totalSeconds.value}); mep.expanded = false">
+                Add to current workout
+              </button>
             </mat-expansion-panel>
           </div>
         </mat-card-content>
@@ -32,26 +37,29 @@
         <mat-card
           [ngClass]="{'rest-item': workout.id === 0}"
           *ngFor="let workout of finalList; let i = index;">
-          <mat-card-content style="display:flex; justify-content: space-between; width:100%; font-size:18px">
+          <mat-card-content>
             <span>{{ workout.name }}</span>
             <span>
               {{ workout.repCount }}
               <span *ngIf="workout.id !== 0">reps</span>
               <span *ngIf="workout.id === 0">seconds</span>
-            
                 <mat-icon
                   (click)="removeExerciseFromWorkout(i)"
                   class="remove-exercise-btn"
                   aria-hidden="false"
-                  aria-label="Example home icon">
+                  aria-label="Remove Exercise Icon">
                   remove_circle_outline
                 </mat-icon>
             </span>
           </mat-card-content>
         </mat-card>
-        <button 
-        *ngIf="finalList.length > 0"
-        style="display: flex; justify-self:center; margin-top:15px" mat-raised-button color="warn" (click)="createWorkout()">Create Workout</button>
+        <button
+          class="create-workout-btn"
+          *ngIf="finalList.length > 0"
+          mat-raised-button color="warn"
+          (click)="createWorkout()">
+          Create Workout
+        </button>
       </mat-list>
     </div>
   </div>

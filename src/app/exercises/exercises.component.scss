@@ -3,43 +3,72 @@
     padding: 15px;
     display: flex;
     justify-content: space-between;
-}
+    
+    .exercise-selector-container {
+        width: 40%;
+        display: inline-block;
+    
+        mat-card {
+            margin-bottom: 15px;
 
-mat-list-item {
-    border: 1px solid black;
-}
+            mat-expansion-panel-header {
+                background-color: #4051B5;
+            
+                &:hover {
+                    background-color: #4051B5;
+                }
+            
+                &:selected {
+                    background-color: #4051B5;
+                }
+            }
 
-.exercise-selector-container {
-    width: 40%;
-    display: inline-block;
+            mat-form-field {
+                margin-top: 15px;
+            }
 
-    mat-card {
-        margin-bottom: 15px;
+            button {
+                margin-left: 15px;
+            }
+        }
     }
-}
+    
+    .workout-summary-container {
+        width: 40%;
+        display: inline-block;
+        vertical-align: top;
+    
+        mat-card {
+            margin-bottom: 5px;
 
-.workout-summary-container {
-    width: 40%;
-    display: inline-block;
-    vertical-align: top;
+            mat-card-content {
+                display:flex;
+                justify-content: space-between;
+                width:100%;
+                font-size:18px
+            }
+        }
 
-    mat-card {
-        margin-bottom: 5px;
+        .create-workout-btn {
+            display: flex;
+            justify-self: center;
+            margin-top: 15px;
+        }
     }
-}
-
-.rest-item {
-    background-color: #f44336;
-}
-
-.remove-exercise-btn {
-    color:white;
-    margin-left: 7.5px;
-
-    &:hover {
-        cursor: pointer;
-        color: red;
-        transform: scale(1.05);
-        transition: 0.5s;
+    
+    .rest-item {
+        background-color: #f44336;
+    }
+    
+    .remove-exercise-btn {
+        color:#fff;
+        margin-left: 7.5px;
+    
+        &:hover {
+            cursor: pointer;
+            color: red;
+            transform: scale(1.05);
+            transition: 0.5s;
+        }
     }
 }

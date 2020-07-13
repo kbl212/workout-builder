@@ -10,10 +10,8 @@
           *ngFor="let exercise of exerciseList; let i = index;"
           (click)="selectExercise(i)"
           [ngClass]="{'selected-exercise': selectedExercise === i, 'rest-item': exercise.id === 0}">
-            <mat-card-content
-              style="display:flex; justify-content: space-between; width:100%; font-size:18px"
-              >
-              <div style="display:flex; justify-content: space-between; width:100%">
+            <mat-card-content>
+              <div class="card-content-wrapper">
                 <span>{{ exercise.name }}</span>
                 <span>
                   {{ exercise.repCount }}
@@ -25,29 +23,45 @@
           </mat-card>
         </mat-list>
       </div>
-      <div class="video-container" style="display: inline-block">
+      <div class="video-container">
         <iframe 
           *ngIf="exerciseList[selectedExercise].id !== 0"
-          style="border: 1px solid black"
-          width="560" height="315" [src]='getSelectedExerciseUrl()' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+          width="560"
+          height="315"
+          [src]='getSelectedExerciseUrl()'
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
         </iframe>
-        <div 
-        *ngIf="exerciseList[selectedExercise].id === 0"
-        style="height:315px; width:560px; display:flex; justify-content: center; align-items: center; font-size:18px; border:1px solid black; margin-bottom:5px">
+        <div
+          class="rest-container"
+          *ngIf="exerciseList[selectedExercise].id === 0">
           <strong>REST for {{ exerciseList[selectedExercise].repCount }} seconds</strong>
         </div>
-        <div class="video-button-container" style="display:flex; justify-content: space-between;">
+        <div class="video-button-container">
           <div>
-            <button mat-raised-button color="basic" *ngIf="selectedExercise !== 0" (click)="goToPreviousExercise()">Previous</button>
+            <button
+              mat-raised-button
+              color="basic"
+              *ngIf="selectedExercise !== 0"
+              (click)="goToPreviousExercise()">
+              Previous
+            </button>
           </div>
-          <div style="display:flex; align-items:center;font-size:18px">
+          <div>
             <strong>{{ exerciseList[selectedExercise].name }}, {{ exerciseList[selectedExercise].repCount }}
               <span *ngIf="exerciseList[selectedExercise].id !== 0">reps</span>
               <span *ngIf="exerciseList[selectedExercise].id === 0">seconds</span>
             </strong>
           </div>
           <div>
-            <button mat-raised-button color="warn" *ngIf="selectedExercise !== exerciseList.length - 1" (click)="goToNextExercise()">Next</button>
+            <button
+              mat-raised-button
+              color="warn"
+              *ngIf="selectedExercise !== exerciseList.length - 1"
+              (click)="goToNextExercise()">
+              Next
+            </button>
           </div>
         </div>
       </div>

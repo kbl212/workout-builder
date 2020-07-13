@@ -25,7 +25,7 @@ export class WorkoutComponent implements OnInit {
   ngOnInit() {
     const workoutId = this.route.snapshot.paramMap.get('id');
     this.workout = this.workoutService.getWorkoutById(workoutId)
-    this.exerciseList = this.workout.exercises;
+    this.exerciseList = !!this.workout ? this.workout.exercises : [];
   }
 
   selectExercise(index) {
